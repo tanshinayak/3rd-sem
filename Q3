@@ -1,0 +1,33 @@
+#include<iostream>
+#include <fcntl.h>
+#include <unistd.h>
+using namespace std;
+int main(int argc,char *argv[])
+{
+	if (argc!=3)
+	{
+		cout<<"Improper arguments";
+		exit(100);
+	}
+	int fd1= open (argv[1],0);
+	if (fd1<0)
+	
+	{
+		cout<<"error inthe opening file "<,argv[1]<<endl;
+	}
+
+	int fd2=creat(argv[2],0666);
+	if (fd2<0)
+	{
+		cout <<" error in creating a file"<<argv[2]<<endl;
+	}
+	 char buff[500];
+	int count ;
+	while (count =read (fd1,buff,sizeof(buf)))
+	{
+		write (fd2,buf,count );
+	}
+	close (fd1);
+	close(fd2);
+	return 0;
+}
