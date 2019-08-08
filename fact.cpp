@@ -9,12 +9,12 @@ class fact{
 		{
 			n =a;
 		}
-		int calculate();
+		long double calculate();
 };
 
-fact::calculate()
+long double fact::calculate()
 {
-	int ans = 1;
+	unsigned long long ans = 1;
 	for(int i=n; i>0; i --)
 	{
 		ans *=i;
@@ -24,8 +24,12 @@ fact::calculate()
  
 int main()
 {
-	fact a(5);
-	cout<<a.calculate();
-	getch();
+	int n;
+	while (true){
+		cin>>n;
+		fact a(n);
+		cout<<a.calculate()<<endl;
+		getch();
+	}
 	return 0;
 }
