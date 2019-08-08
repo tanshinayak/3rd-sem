@@ -10,13 +10,24 @@ int main()
 	stack<char> s(a.length());
 	for(int i=0; i<a.length(); i++)
 	{
-		if (a[i]=='{' || a[i]=='[' || a[i]=='(' || a[i]=='<' || (a[i]=='*' && a[i+1]=='/'))
+		if (a[i]=='*' && a[i+1]=='/')
+			s.push('&');
+		else if (a[i]=='/' && a[i+1 ]=='*')
+		{
+			if ( map(s.pop()) != '&' )
+			{
+				getch();
+				return -1;
+			}
+		}
+		if (a[i]=='{' || a[i]=='[' || a[i]=='(' || a[i]=='<')
 			s.push(a[i]);
-		else if (a[i]=='}' || a[i]==']' || a[i]==')' || a[i]=='>' || a[i]=='/')
+		else if (a[i]=='}' || a[i]==']' || a[i]==')' || a[i]=='>' )
 		{
 			if (map(s.pop()) != a[i])
 			{
 				cout<<"Error encountered!\n Wrong delimiter at location "<<i<<"\n Check Expression";
+				getch();
 				return -1;	
 			}
 		}		
@@ -26,6 +37,7 @@ int main()
 	else
 	{
 		cout<<"Error encountered!\nExtra delimiter\n Check Expression";
+		getch();
 		return -1;
 	}
 	getch();
@@ -41,5 +53,7 @@ char map(char a)
 		return ')';
 	else if (a == '<')
 		return '>';
+	else if (a == '&')
+		return '&';
 	return '~';
 }
