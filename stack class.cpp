@@ -1,6 +1,6 @@
 #include <iostream>
 #include <conio.h>
-#include "mistack.cpp"
+#include "mistack.h"
 using namespace std;
 
 int main()
