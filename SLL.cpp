@@ -16,7 +16,8 @@ template <class type>
 class sll{
 	public:
 		node<type>* head;
-		void insert();		
+		sll();
+		void insert(node<type> p);		
 		/*
 		Insert 
 			end
@@ -30,15 +31,25 @@ class sll{
 		
 };
 
+
 template <class type>
-void sll<type>::insert()
+sll<type>::sll()
 {
-	
+	head = NULL;
 }
+
+template <class type>
+void sll<type>::insert(node<type>* p)
+{
+	p->next = head;
+	head = p;
+}
+
+
 int main()
 {
 	node<int> a(5); 
-	getch()l;
+	getch();
 	return 0;
 }
 
