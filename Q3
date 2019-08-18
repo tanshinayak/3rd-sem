@@ -31,3 +31,4 @@ int main(int argc,char *argv[])
 	close(fd2);
 	return 0;
 }
+//http://samanbarghi.com/blog/2014/09/05/how-to-wrap-a-system-call-libc-function-in-linux/
