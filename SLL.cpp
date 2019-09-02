@@ -5,23 +5,20 @@ using namespace std;
 template <class type>
 struct node{
 	type info;
-	node* next = NULL;
-	node(type data)
-	{
-		info = data;
-	}
+	node* next;
+
 };
 
 template <class type>
 class sll{
 	public:
-		node<void>* head;
+		node<int>* head;
 		sll();
 		~sll();
-		void insertIndex(node<type>* p, int n);		
-		void delIndex(int n);		
-		void delData(type info, int times =1);
-		void reverse();
+		void insertIndex(node<type>* p, int n=0);		
+//		void delIndex(int n);		
+//		void delData(type info, int times =1);
+		//void reverse();
 		void display();
 		int length();
 		/*
@@ -52,7 +49,7 @@ sll<type>::~sll()
 }
 
 template <class type>
-void sll<type>::insertIndex(node<type>* p, int n=0);
+void sll<type>::insertIndex(node<type>* p, int n)
 {
 	if(n>length())
 		return;
@@ -72,22 +69,30 @@ void sll<type>::insertIndex(node<type>* p, int n=0);
 }
 
 template <class type>
-void sll<type>::insertIndex(node<type>* p, int n);
+void sll<type>::display()
 {
-	p->next = head;
-	head = p;
+	node<type>* temp =head;
+	while(temp != NULL)
+	{
+		cout<<head->info;
+		temp = temp->next;
+	}
 }
 
 template <class type>
-void sll<type>::insertIndex(node<type>* p, int n);
+int sll<type>::length()
 {
-	p->next = head;
-	head = p;
+	return 5;
 }
 
 int main()
 {
-	node<int> a(5); 
+	node<int> a;
+	a.info = 5;
+	a.next = NULL; 
+	sll<int> b;
+	b.insertIndex(&a);
+	b.display();
 	getch();
 	return 0;
 }
