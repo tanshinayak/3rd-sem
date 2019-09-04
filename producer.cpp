@@ -1,17 +1,21 @@
 #include <iostream>
 #include <conio.h>
 using namespace std;
+bool isFull(int p, int c);
+bool isEmpty(int p, int c);
 int n = 5;
 int main(){
-	int ar[n] = {0}*n;
+	int ar[n] = {0};
 	int p=0;
 	int c=-1;
-	char c = '0';
-	while(True)
+	char ch = '0';
+	while(true)
 	{
-		cin>>c;
-		if(c=='1')
+		cout<<"IM IN UR LOOPY: "<<endl;
+		cin>>ch;
+		if(ch=='1')
 		{
+			cout<<"IN YA PRODUCER!\n";
 			//Produce
 			if(!isFull(p,c))
 			{
@@ -20,16 +24,24 @@ int main(){
 				cin>>ar[p];
 				p++;	
 			}
+			else
+			{
+				cout<<"It's full AF!\n";
+			}
 		}
 		
-		if(c=='2')
+		if(ch=='2')
 		{
 			//Consume
 			if(!isEmpty(p,c))
 			{
+				cout<<"Giving out: ";
 				c = ++c%n;
-				cout<<ar[c];	
+				cout<<ar[c]<<endl;;	
 			}		
+			else{
+				cout<<"It's starving !\n";
+			}
 		}
 	}
 	getch();
@@ -38,23 +50,15 @@ int main(){
 bool isFull(int p, int c)
 {
 	if(p==c)
-		return True;
-	return False;
+		return true;
+	return false;
 }
 bool isEmpty(int p, int c)
 {
 	c++;
 	c = c%n;
 	if(p==c)
-		return True;
-	return False;
-}
-void produce(int* p)
-{
-
-}
-int consume()
-{
-	
+		return true;
+	return false;
 }
 //dijkastra's algorithm
