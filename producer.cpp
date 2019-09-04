@@ -3,10 +3,35 @@
 using namespace std;
 int n = 5;
 int main(){
-	int ar[n] = {0};
+	int ar[n] = {0}*n;
 	int p=0;
 	int c=-1;
-	
+	char c = '0';
+	while(True)
+	{
+		cin>>c;
+		if(c=='1')
+		{
+			//Produce
+			if(!isFull(p,c))
+			{
+				p = p%n;
+				cout<<"Enter Value: ";
+				cin>>ar[p];
+				p++;	
+			}
+		}
+		
+		if(c=='2')
+		{
+			//Consume
+			if(!isEmpty(p,c))
+			{
+				c = ++c%n;
+				cout<<ar[c];	
+			}		
+		}
+	}
 	getch();
 	return 0;
 }
@@ -24,14 +49,12 @@ bool isEmpty(int p, int c)
 		return True;
 	return False;
 }
-void produce(int*p)
+void produce(int* p)
 {
-	&p = &p++%n;
-	int a;
-	cout<<"Enter Value:";
-	
+
 }
 int consume()
 {
 	
 }
+//dijkastra's algorithm

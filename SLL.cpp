@@ -12,10 +12,11 @@ struct node{
 template <class type>
 class sll{
 	public:
-		node<int>* head;
+		int l;
+		node<type>* head =NULL;
 		sll();
 		~sll();
-		void insertIndex(node<type>* p, int n=0);		
+		void insertIndex(type info, int n=0);		
 //		void delIndex(int n);		
 //		void delData(type info, int times =1);
 		//void reverse();
@@ -40,6 +41,7 @@ template <class type>
 sll<type>::sll()
 {
 	head = NULL;
+	l =0 ;
 }
 
 template <class type>
@@ -49,21 +51,28 @@ sll<type>::~sll()
 }
 
 template <class type>
-void sll<type>::insertIndex(node<type>* p, int n)
+void sll<type>::insertIndex(type info, int n)
 {
+	node<type>* p = new node<type>;
+	p->info = info;
+	p->next = NULL; 
 	if(n>length())
-		return;
+		n = length();
 	if(n==0)
 	{
 		p->next = head;
 		head = p;
-		return;
+		p = NULL;
+		delete p;
+		l++;
+		return;	
 	}
 	node<type>* temp = head;
 	for(int i = 0; i<n-1; i++)
 		temp = temp->next;	
 	p->next = temp->next;
 	temp->next = p;
+	l++;
 	temp = NULL;
 	delete temp;
 }
@@ -74,7 +83,7 @@ void sll<type>::display()
 	node<type>* temp =head;
 	while(temp != NULL)
 	{
-		cout<<head->info;
+		cout<<temp->info;
 		temp = temp->next;
 	}
 }
@@ -82,16 +91,20 @@ void sll<type>::display()
 template <class type>
 int sll<type>::length()
 {
-	return 5;
+	return l;
 }
 
 int main()
 {
-	node<int> a;
-	a.info = 5;
-	a.next = NULL; 
+
 	sll<int> b;
-	b.insertIndex(&a);
+	b.insertIndex(1);
+	b.insertIndex(2);
+	b.insertIndex(3,1);
+	b.insertIndex(7,2);
+	b.insertIndex(8,3);
+	cout<<b.l<<endl;
+	b.insertIndex(4,9);
 	b.display();
 	getch();
 	return 0;
