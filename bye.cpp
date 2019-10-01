@@ -4,6 +4,6 @@
 using namespace std;
 int main()
 {
-	execlp("sudo","sudo","shutdown","-h","now",NULL);
+	execlp("pacman4console","pacman4console",NULL);
 }
 
