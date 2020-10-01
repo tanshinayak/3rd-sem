@@ -1,14 +1,15 @@
 template <class TYPE>
-TYPE smallest(TYPE arr[], int size)
+TYPE smallest(TYPE ar[], int size)
 {
-          TYPE x = arr[0];
+          TYPE x = ar[0];
 	for (int i =0; i<n; i++)
 	{
-	      if(x>arr[i])
-                       x = arr[i];
+	      if(x>ar[i])
+                       x = ar[i];
 	}
 	return x;
 }
+//you should tpye correctly
 
 //here TYPE is just a name, it'll be replaced by type of variable used.
 
